@@ -1,0 +1,19 @@
+public static int findPerfectSquareRoot(int n) {
+        if (n < 0) return -1;
+        if (n == 0 || n == 1) return n;
+
+        int left = 1;
+        int right = n;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            long sq = (long) mid * mid; // Avoid integer overflow
+
+            if (sq == n) return mid;
+            else if (sq < n) left = mid + 1;
+            else right = mid - 1;
+        }
+
+        return -1; // Not a perfect square
+    }
